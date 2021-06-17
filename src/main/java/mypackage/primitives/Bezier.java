@@ -4,6 +4,17 @@ import java.util.Random;
 
 public class Bezier {
 
+    public Bezier(Point[] points) {
+        this.x1 = points[0].getX();
+        this.y1 = points[0].getY();
+        this.ctrlx1 = points[1].getX();
+        this.ctrly1 = points[1].getY();
+        this.ctrlx2 = points[2].getX();
+        this.ctrly2 = points[2].getY();
+        this.x2 = points[3].getX();
+        this.y2 = points[3].getY();
+    }
+
     public Bezier(Random r, int maxX, int maxY) {
         x1 = r.nextDouble() * maxX;
         y1 = r.nextDouble() * maxY;
