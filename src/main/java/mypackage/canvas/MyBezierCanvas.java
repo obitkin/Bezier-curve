@@ -54,13 +54,9 @@ public class MyBezierCanvas extends Canvas {
         g2 = (Graphics2D) g;
 
         for (Bezier bezier: bezierList) {
-            System.out.println("-------------------------------------");
-            System.out.println(bezier.getX1() + "   " + bezier.getY1());
-            System.out.println(bezier.getX2() + "   " + bezier.getY2());
             curve = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-            for (double t = 0; t < 1; t += 0.0002) {
+            for (double t = 0; t < 1; t += 50. / (width * height)) {
                 Point point = getPoint(bezier, t);
-                System.out.println("x = " + point.getX() + "  y = " + point.getY());
                 curve.setRGB((int) point.getX(), (int) point.getY(), Color.black.getRGB());
             }
             g2.drawImage(curve, null, null);
