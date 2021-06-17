@@ -54,27 +54,46 @@ public class MyBezierCanvas extends Canvas {
             curve = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             for (double t = 0; t < 1; t += 50. / (width * height)) {
                 Point point = getPoint(bezier, t);
-                curve.setRGB((int) Math.round(point.getX()), (int) Math.round(point.getY()), Color.black.getRGB());
+                curve.setRGB((int) (point.getX()), (int) (point.getY()), Color.black.getRGB());
             }
             g2.drawImage(curve, null, null);
-//            g2.drawLine(
-//                    (int)Math.round(bezier.getX1()),
-//                    (int)Math.round(bezier.getY1()),
-//                    (int)Math.round(bezier.getCtrlx1()),
-//                    (int)Math.round(bezier.getCtrly1()));
-//            g2.drawLine(
-//                    (int)Math.round(bezier.getCtrlx1()),
-//                    (int)Math.round(bezier.getCtrly1()),
-//                    (int)Math.round(bezier.getCtrlx2()),
-//                    (int)Math.round(bezier.getCtrly2()));
-//            g2.drawLine(
-//                    (int)Math.round(bezier.getCtrlx2()),
-//                    (int)Math.round(bezier.getCtrly2()),
-//                    (int)Math.round(bezier.getX2()),
-//                    (int)Math.round(bezier.getY2()));
+            if (timeOut == null) {
+                drawPoint(bezier.getPoints()[0], g2);
+                drawPoint(bezier.getPoints()[1], g2);
+                drawPoint(bezier.getPoints()[2], g2);
+                drawPoint(bezier.getPoints()[3], g2);
+                g2.drawImage(curve, null, null);
+                g2.setColor(Color.RED);
+                g2.drawLine(
+                        (int)Math.round(bezier.getX1()),
+                        (int)Math.round(bezier.getY1()),
+                        (int)Math.round(bezier.getCtrlx1()),
+                        (int)Math.round(bezier.getCtrly1()));
+                g2.drawLine(
+                        (int)Math.round(bezier.getCtrlx1()),
+                        (int)Math.round(bezier.getCtrly1()),
+                        (int)Math.round(bezier.getCtrlx2()),
+                        (int)Math.round(bezier.getCtrly2()));
+                g2.drawLine(
+                        (int)Math.round(bezier.getCtrlx2()),
+                        (int)Math.round(bezier.getCtrly2()),
+                        (int)Math.round(bezier.getX2()),
+                        (int)Math.round(bezier.getY2()));
+            }
         }
         timeEstimated = System.currentTimeMillis() - timeEstimated;
         if (timeOut != null)
             timeOut.setText(String.valueOf(timeEstimated));
+    }
+
+    private void drawPoint(Point point, Graphics2D graphics2D) {
+        int r = 10;
+        int targetX = (int)point.getX() - r / 2;
+        int targetY = (int)point.getY() - r / 2;
+        // Paint the target (selector)
+        graphics2D.setColor(Color.RED);
+        graphics2D.fillOval(targetX, targetY, r, r);
+        graphics2D.setColor(Color.BLACK);
+        graphics2D.drawOval(targetX, targetY, r, r);
     }
 }

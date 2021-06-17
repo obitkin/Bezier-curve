@@ -78,6 +78,15 @@ public class Bezier {
         return y2;
     }
 
+    public Point[] getPoints() {
+        Point[] points = new Point[4];
+        points[0] = new Point(x1, y1);
+        points[1] = new Point(ctrlx1, ctrly1);
+        points[2] = new Point(ctrlx2, ctrly2);
+        points[3] = new Point(x2, y2);
+        return points;
+    }
+
     public double[] getValues() {
         return new double[] {x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2};
     }
