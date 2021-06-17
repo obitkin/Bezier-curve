@@ -18,8 +18,6 @@ public class MyBezierCanvas extends Canvas {
 
     private List<Bezier> bezierList;
 
-    private List<Point> pointList;
-
     private BufferedImage curve;
 
     private int width;
@@ -47,7 +45,6 @@ public class MyBezierCanvas extends Canvas {
                 (v1 * pow(1-t, 3));
     }
 
-
     public void paint(Graphics g) {
         timeEstimated = System.currentTimeMillis();
         Graphics2D g2;
@@ -57,9 +54,24 @@ public class MyBezierCanvas extends Canvas {
             curve = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             for (double t = 0; t < 1; t += 50. / (width * height)) {
                 Point point = getPoint(bezier, t);
-                curve.setRGB((int) point.getX(), (int) point.getY(), Color.black.getRGB());
+                curve.setRGB((int) Math.round(point.getX()), (int) Math.round(point.getY()), Color.black.getRGB());
             }
             g2.drawImage(curve, null, null);
+//            g2.drawLine(
+//                    (int)Math.round(bezier.getX1()),
+//                    (int)Math.round(bezier.getY1()),
+//                    (int)Math.round(bezier.getCtrlx1()),
+//                    (int)Math.round(bezier.getCtrly1()));
+//            g2.drawLine(
+//                    (int)Math.round(bezier.getCtrlx1()),
+//                    (int)Math.round(bezier.getCtrly1()),
+//                    (int)Math.round(bezier.getCtrlx2()),
+//                    (int)Math.round(bezier.getCtrly2()));
+//            g2.drawLine(
+//                    (int)Math.round(bezier.getCtrlx2()),
+//                    (int)Math.round(bezier.getCtrly2()),
+//                    (int)Math.round(bezier.getX2()),
+//                    (int)Math.round(bezier.getY2()));
         }
         timeEstimated = System.currentTimeMillis() - timeEstimated;
         if (timeOut != null)

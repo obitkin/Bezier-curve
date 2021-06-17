@@ -99,16 +99,6 @@ public class DrawerWindow {
         mainFrame.setVisible(true);
     }
 
-    private java.util.List<Bezier> generateRandom(int count) {
-        Random r = new Random();
-        r.setSeed(System.currentTimeMillis());
-
-        java.util.List<Bezier> list = new ArrayList<>(count);
-        for (int i = 0; i < count; i++) {
-            list.add(new Bezier(r, canvasWidth, canvasHeight));
-        }
-        return list;
-    }
 
 
     private void startDraw() {
@@ -140,6 +130,7 @@ public class DrawerWindow {
             controlPanel1.removeAll();
             List<Bezier> bezierList = new ArrayList<>();
             bezierList.add(new Bezier(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]));
+
             myBezierCanvas = new MyBezierCanvas(bezierList, canvasWidth, canvasHeight, null);
             controlPanel1.add(myBezierCanvas);
             messageForInput.setText("Введите параметры кривой Безье: 0<=x<=" + canvasWidth + "; 0<=y<=" + canvasHeight);
