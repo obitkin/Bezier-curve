@@ -54,7 +54,6 @@ public class DrawerWindow {
                 System.exit(0);
             }
         });
-
         controlPanel1 = new Panel();
         controlPanel1.setLayout(new FlowLayout());
         controlPanel1.setSize(canvasWidth, canvasHeight);

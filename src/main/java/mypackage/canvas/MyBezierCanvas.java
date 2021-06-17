@@ -69,11 +69,11 @@ public class MyBezierCanvas extends Canvas {
                         (int)Math.round(bezier.getY1()),
                         (int)Math.round(bezier.getCtrlx1()),
                         (int)Math.round(bezier.getCtrly1()));
-                g2.drawLine(
-                        (int)Math.round(bezier.getCtrlx1()),
-                        (int)Math.round(bezier.getCtrly1()),
-                        (int)Math.round(bezier.getCtrlx2()),
-                        (int)Math.round(bezier.getCtrly2()));
+//                g2.drawLine(
+//                        (int)Math.round(bezier.getCtrlx1()),
+//                        (int)Math.round(bezier.getCtrly1()),
+//                        (int)Math.round(bezier.getCtrlx2()),
+//                        (int)Math.round(bezier.getCtrly2()));
                 g2.drawLine(
                         (int)Math.round(bezier.getCtrlx2()),
                         (int)Math.round(bezier.getCtrly2()),

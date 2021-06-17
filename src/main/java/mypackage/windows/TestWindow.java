@@ -81,7 +81,7 @@ public class TestWindow {
         constraints.gridy = 1;
         mainFrame.add(rowBot, constraints);
 
-        Panel cvHolder = new Panel(new GridLayout(1, 2));
+        Panel cvHolder = new Panel(new GridLayout(1, 1));
         controlPanel1 = new Panel();
         controlPanel1.setLayout(new FlowLayout());
         controlPanel1.setSize(canvasWidth, canvasHeight);
